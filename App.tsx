@@ -1,3 +1,4 @@
+
 import React, { useState, useCallback } from 'react';
 import { LucideMenu, LucideMaximize2, LucideDelete } from 'lucide-react';
 
@@ -122,10 +123,10 @@ const App: React.FC = () => {
     <div className="calc-app">
       <div className="main-calculator">
         <div className="header">
-          <div className="flex items-center gap-6">
-            <LucideMenu size={20} className="cursor-pointer" />
-            <h1 className="text-xl font-semibold tracking-tight">Standard</h1>
-            <LucideMaximize2 size={16} className="text-gray-500 cursor-pointer" />
+          <div className="flex items-center gap-4">
+            <LucideMenu size={18} className="cursor-pointer" />
+            <h1 className="text-xl font-semibold">Standard</h1>
+            <LucideMaximize2 size={14} className="text-gray-500 cursor-pointer" />
           </div>
         </div>
 
@@ -134,7 +135,7 @@ const App: React.FC = () => {
           <div className="current-val">{currentVal}</div>
         </div>
 
-        <div className="memory-row">
+        <div className="memory-row px-2">
           <div className="mem-btn">MC</div>
           <div className="mem-btn">MR</div>
           <div className="mem-btn">M+</div>
@@ -146,42 +147,42 @@ const App: React.FC = () => {
           <Button label="%" action="%" className="btn-op" />
           <Button label="CE" action="CE" className="btn-op" />
           <Button label="C" action="C" className="btn-op" />
-          <Button label={<LucideDelete size={24} />} action="backspace" className="btn-op" />
+          <Button label={<LucideDelete size={18} />} action="backspace" className="btn-op" />
 
-          <Button label={<span className="text-xl"><sup>1</sup>/<sub>x</sub></span>} action="1/x" className="btn-op" />
-          <Button label={<span className="text-xl">x<sup>2</sup></span>} action="x²" className="btn-op" />
-          <Button label={<span className="text-xl"><sup>2</sup>√x</span>} action="√x" className="btn-op" />
-          <Button label="÷" action="÷" className="btn-op text-3xl font-light" />
+          <Button label={<span><sup>1</sup>/<sub>x</sub></span>} action="1/x" className="btn-op" />
+          <Button label={<span>x<sup>2</sup></span>} action="x²" className="btn-op" />
+          <Button label="²√x" action="√x" className="btn-op" />
+          <Button label="÷" action="÷" className="btn-op text-2xl" />
 
-          <Button label="7" action="7" />
-          <Button label="8" action="8" />
-          <Button label="9" action="9" />
-          <Button label="×" action="×" className="btn-op text-3xl font-light" />
+          <Button label="7" action="7" className="btn-num" />
+          <Button label="8" action="8" className="btn-num" />
+          <Button label="9" action="9" className="btn-num" />
+          <Button label="×" action="×" className="btn-op text-2xl" />
 
-          <Button label="4" action="4" />
-          <Button label="5" action="5" />
-          <Button label="6" action="6" />
-          <Button label="−" action="-" className="btn-op text-4xl font-light" />
+          <Button label="4" action="4" className="btn-num" />
+          <Button label="5" action="5" className="btn-num" />
+          <Button label="6" action="6" className="btn-num" />
+          <Button label="−" action="-" className="btn-op text-2xl" />
 
-          <Button label="1" action="1" />
-          <Button label="2" action="2" />
-          <Button label="3" action="3" />
-          <Button label="+" action="+" className="btn-op text-4xl font-light" />
+          <Button label="1" action="1" className="btn-num" />
+          <Button label="2" action="2" className="btn-num" />
+          <Button label="3" action="3" className="btn-num" />
+          <Button label="+" action="+" className="btn-op text-2xl" />
 
-          <Button label={<span className="text-xl">+/−</span>} action="+/-" />
-          <Button label="0" action="0" />
-          <Button label="." action="." />
-          <Button label="=" action="=" className="btn-teal" />
+          <Button label="+/−" action="+/-" className="btn-num" />
+          <Button label="0" action="0" className="btn-num" />
+          <Button label="." action="." className="btn-num" />
+          <Button label="=" action="=" className="btn-teal text-3xl" />
         </div>
       </div>
 
       <div className="sidebar">
-        <div className="flex gap-6 mb-4">
+        <div className="flex gap-4 mb-4">
           <div className="tab-btn active">History</div>
           <div className="tab-btn text-gray-500">Memory</div>
         </div>
-        <div className="flex-1 flex flex-col justify-start pt-10 items-start text-gray-500">
-          <p className="text-sm font-semibold opacity-70">There's no history yet.</p>
+        <div className="flex-1 flex flex-col justify-center items-center text-gray-400">
+          <p className="text-sm font-semibold">There's no history yet</p>
         </div>
       </div>
     </div>
