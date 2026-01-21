@@ -7,6 +7,7 @@ const App: React.FC = () => {
   const [prevExpr, setPrevExpr] = useState<string>('');
   const [lastOp, setLastOp] = useState<string | null>(null);
   const [waitingForOperand, setWaitingForOperand] = useState<boolean>(false);
+  const [history, setHistory] = useState<{ expression: string; result: string }[]>([]);
 
   const performCalculation = (left: number, op: string, right: number): number => {
     switch (op) {
@@ -58,6 +59,13 @@ const App: React.FC = () => {
       const current = parseFloat(currentVal);
       const left = parseFloat(prevExpr);
       const result = performCalculation(left, lastOp, current);
+
+      const newHistoryItem = {
+        expression: `${prevExpr} ${currentVal} =`,
+        result: String(result)
+      };
+      setHistory(prev => [newHistoryItem, ...prev]);
+
       setPrevExpr('');
       setCurrentVal(String(result));
       setLastOp(null);
@@ -181,8 +189,21 @@ const App: React.FC = () => {
           <div className="tab-btn active">History</div>
           <div className="tab-btn text-gray-500">Memory</div>
         </div>
-        <div className="flex-1 flex flex-col justify-center items-center text-gray-400">
-          <p className="text-sm font-semibold">There's no history yet</p>
+        <div className="flex-1 overflow-y-auto p-2 scrollbar-thin">
+          {history.length === 0 ? (
+            <div className="flex flex-col justify-center items-center h-full text-gray-400">
+              <p className="text-sm font-semibold">There's no history yet</p>
+            </div>
+          ) : (
+            <div className="flex flex-col gap-4">
+              {history.map((item, index) => (
+                <div key={index} className="flex flex-col items-end gap-1 p-2 hover:bg-gray-100 rounded cursor-pointer transition-colors">
+                  <div className="text-sm text-gray-500">{item.expression}</div>
+                  <div className="text-xl font-semibold text-gray-800">{item.result}</div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>
